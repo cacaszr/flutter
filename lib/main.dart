@@ -48,7 +48,7 @@ class ProfilePage extends StatelessWidget {
             const SizedBox(height: 20),
             // Nama & Institusi
             const Text(
-              "SALSABILLA ZARA",
+              "SALSABILLA",
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const Text(
