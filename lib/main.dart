@@ -24,10 +24,10 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 47, 4, 25),
+      backgroundColor: const Color.fromARGB(255, 179, 112, 145),
       appBar: AppBar(
-        title: const Text("Halaman Profil"),
-        backgroundColor: const Color.fromARGB(255, 164, 15, 97),
+        title: const Text("Salsabillazr Profile"),
+        backgroundColor: const Color.fromARGB(255, 120, 25, 77),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -38,7 +38,7 @@ class ProfilePage extends StatelessWidget {
             const Center(
               child: CircleAvatar(
                 radius: 65,
-                backgroundColor: Color.fromARGB(255, 227, 126, 175),
+                backgroundColor: Color.fromARGB(255, 253, 172, 220),
                 child: CircleAvatar(
                   radius: 60,
                   backgroundImage: AssetImage('assets/images/profil.jpeg'), 
@@ -48,12 +48,12 @@ class ProfilePage extends StatelessWidget {
             const SizedBox(height: 20),
             // Nama & Institusi
             const Text(
-              "SALSABILLA",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              "CACASZR",
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 247, 164, 234)),
             ),
             const Text(
               "D3 Teknik Informatika - Semester 4",
-              style: TextStyle(fontSize: 16, color: Color.fromARGB(255, 192, 88, 147)),
+              style: TextStyle(fontSize: 16, color: Color.fromARGB(255, 247, 197, 71)),
             ),
             const SizedBox(height: 30),
             Padding(
