@@ -1,88 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/bloc/login_bloc.dart';
+import 'package:flutter_application_1/routes.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Profile About Me',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: const ProfilePage(),
-    );
-  }
-}
-
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 179, 112, 145),
-      appBar: AppBar(
-        title: const Text("Salsabillazr Profile"),
-        backgroundColor: const Color.fromARGB(255, 120, 25, 77),
-        centerTitle: true,
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(height: 30),
-            // Bagian Foto
-            const Center(
-              child: CircleAvatar(
-                radius: 65,
-                backgroundColor: Color.fromARGB(255, 253, 172, 220),
-                child: CircleAvatar(
-                  radius: 60,
-                  backgroundImage: AssetImage('assets/images/profil.jpeg'), 
-                ),
-              ),
-            ),
-            const SizedBox(height: 20),
-            // Nama & Institusi
-            const Text(
-              "CACASZR",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 247, 164, 234)),
-            ),
-            const Text(
-              "D3 Teknik Informatika - Semester 4",
-              style: TextStyle(fontSize: 16, color: Color.fromARGB(255, 247, 197, 71)),
-            ),
-            const SizedBox(height: 30),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
-              child: Card(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                elevation: 4,
-                child: Column(
-                  children: [
-                    _buildListTile(Icons.email, "Email", "salsabillazara@it.student.pens.ac.id"),
-                    const Divider(height: 1),
-                    _buildListTile(Icons.phone, "Telepon", "085664533470"),
-                    const Divider(height: 1),
-                    _buildListTile(Icons.location_on, "Alamat", "Ponorogo, Jawa Timur"),
-                  ],
-                ),
-              ),
-            ),
-          ],
+    // Kita bungkus MaterialApp dengan MultiBlocProvider supaya 
+    // LoginBloc bisa diakses di semua halaman (Login & Home)
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => LoginBloc()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Profile About Me',
+        theme: ThemeData(
+          brightness: Brightness.dark, 
+          primarySwatch: Colors.deepPurple,
         ),
+        // Kita mulai dari halaman Login ya, Beb
+        initialRoute: MyRoute.login.path,
+        routes: routes,
       ),
-    );
-  }
-
-  Widget _buildListTile(IconData icon, String title, String subtitle) {
-    return ListTile(
-      leading: Icon(icon, color: const Color.fromARGB(255, 170, 9, 119)),
-      title: Text(title, style: const TextStyle(fontSize: 14, color: Color.fromARGB(255, 243, 190, 57))),
-      subtitle: Text(subtitle, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
     );
   }
 }
